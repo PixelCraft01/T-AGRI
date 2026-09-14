@@ -1,0 +1,264 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Manrope:wght@500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ================================================================
+   TEJAYS AGRI THEME TOKENS
+   Colors are stored as RGB triplets so Tailwind opacity modifiers
+   (e.g. text-ink/65, border-brand/30) keep working in both themes.
+=============================================================== */
+
+:root {
+  color-scheme: light;
+
+  /* Surfaces */
+  --bg: 247 247 242;            /* #F7F7F2 page background */
+  --bg-alt: 255 255 255;        /* alternating light sections */
+  --surface: 255 255 255;       /* cards / white surfaces */
+  --surface-hover: 232 243 234; /* #E8F3EA hover tint */
+  --surface-tint: 232 243 234;  /* #E8F3EA accent tint */
+
+  /* Text */
+  --text: 11 18 16;             /* #0B1210 */
+  --text-muted: 74 86 80;       /* #4A5650 */
+  --text-soft: 115 122 118;     /* #737A76 */
+
+  /* Brand */
+  --brand: 7 91 58;             /* #075B3A brand text / accents */
+  --brand-fill: 7 91 58;        /* #075B3A brand fills (CTA buttons) */
+  --brand-deep: 4 61 42;        /* #043D2A deeper brand */
+  --accent: 114 185 67;         /* #72B943 leaf accent */
+  --gold: 231 184 75;           /* #E7B84B */
+
+  /* Lines */
+  --border: 11 18 16;           /* light borders use dark-green opacity */
+  --border-strong: 7 91 58;
+
+  /* Ghosts */
+  --on-accent: 7 16 13;         /* text on lime fills */
+  --hero-dark: 7 16 13;         /* #07100D intentional dark surfaces */
+  --shadow-ink: 11 18 16;       /* soft ink shadows */
+  --shadow-brand: 7 91 58;      /* brand-toned shadows */
+
+  font-family: 'Inter', sans-serif;
+  color: rgb(var(--text));
+  background: rgb(var(--bg));
+  line-height: 1.5;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+
+  /* Surfaces */
+  --bg: 7 16 13;                /* #07100D page background */
+  --bg-alt: 11 23 19;           /* #0B1713 alternating sections */
+  --surface: 15 28 23;          /* #0F1C17 cards */
+  --surface-hover: 20 37 30;    /* #14251E hover surface */
+  --surface-tint: 21 44 33;     /* dark green accent tint */
+
+  /* Text */
+  --text: 243 247 244;          /* #F3F7F4 */
+  --text-muted: 184 199 191;    /* #B8C7BF */
+  --text-soft: 143 161 151;     /* #8FA197 */
+
+  /* Brand */
+  --brand: 114 185 67;          /* #72B943 brand text / accents */
+  --brand-fill: 7 91 58;        /* #075B3A keeps premium green fills */
+  --brand-deep: 138 202 97;     /* #8ACA61 deeper brand on hover */
+  --accent: 114 185 67;         /* #72B943 */
+  --gold: 231 184 75;           /* #E7B84B */
+
+  /* Lines */
+  --border: 255 255 255;        /* dark borders use subtle white opacity */
+  --border-strong: 114 185 67;
+
+  /* Ghosts */
+  --on-accent: 7 16 13;
+  --hero-dark: 7 16 13;
+  --shadow-ink: 7 16 13;        /* shadows fall into the dark canvas */
+  --shadow-brand: 21 44 33;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: clip;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  max-width: 100%;
+  overflow-x: clip;
+  background: rgb(var(--bg));
+  color: rgb(var(--text));
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  transition-property: background-color, color;
+  transition-duration: 200ms;
+  transition-timing-function: ease;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+::selection {
+  background: #075b3a;
+  color: #ffffff;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(var(--shadow-brand)/0.4);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(var(--shadow-brand)/0.6);
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid #72b943;
+  outline-offset: 3px;
+}
+
+/* Subtle, premium theme transition (no layout properties animated).
+   Opts out when the user prefers reduced motion. */
+@media (prefers-reduced-motion: no-preference) {
+  body,
+  header,
+  main,
+  section,
+  article,
+  footer,
+  div,
+  span,
+  a,
+  button,
+  input,
+  textarea,
+  select,
+  label,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  p,
+  li {
+    transition-property: background-color, color, border-color, box-shadow, fill, stroke;
+    transition-duration: 200ms;
+    transition-timing-function: ease;
+  }
+}
+
+/* Browser autofill must stay readable in both themes */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus {
+  -webkit-text-fill-color: rgb(var(--text));
+  -webkit-box-shadow: 0 0 0 1000px rgb(var(--bg-alt)) inset;
+  caret-color: rgb(var(--text));
+  transition: background-color 9999s ease-in-out 0s;
+}
+
+@keyframes tejays-pulse-dot {
+  0% {
+    top: 0;
+    opacity: 0;
+  }
+
+  8% {
+    top: 0;
+    opacity: 1;
+  }
+
+  92% {
+    top: calc(100% - 14px);
+    opacity: 1;
+  }
+
+  100% {
+    top: calc(100% - 14px);
+    opacity: 0;
+  }
+}
+
+@keyframes tejays-flow-arrow {
+  0% {
+    transform: translateX(-4px);
+    opacity: 0;
+  }
+
+  30% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateX(12px);
+    opacity: 0;
+  }
+}
+
+@keyframes mobile-menu-in {
+  from {
+    opacity: 0;
+    transform: translateX(3%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -1,0 +1,18 @@
+<svg width="1200" height="820" viewBox="0 0 1200 820" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="a1" x1="0" x2="1"><stop offset="0" stop-color="#EDF6EF"/><stop offset="1" stop-color="#D7E9E1"/></linearGradient>
+  </defs>
+  <rect width="1200" height="820" fill="#F4F8F5"/>
+  <rect x="90" y="120" width="360" height="520" fill="#0C1714"/>
+  <rect x="170" y="180" width="200" height="18" rx="8" fill="#72B943"/>
+  <rect x="170" y="220" width="210" height="14" rx="7" fill="#DDA83B"/>
+  <rect x="170" y="260" width="180" height="14" rx="7" fill="#DFF7E7"/>
+  <rect x="530" y="70" width="560" height="620" rx="24" fill="url(#a1)"/>
+  <path d="M620 650L760 430L880 580L1030 320" stroke="#075B3A" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="620" cy="650" r="12" fill="#075B3A"/>
+  <circle cx="760" cy="430" r="12" fill="#2E8C82"/>
+  <circle cx="880" cy="580" r="12" fill="#DDA83B"/>
+  <circle cx="1030" cy="320" r="12" fill="#72B943"/>
+  <rect x="760" y="150" width="160" height="90" rx="18" fill="#ffffff" fill-opacity="0.7"/>
+  <text x="790" y="202" fill="#0B1210" font-size="38" font-family="Arial, sans-serif" font-weight="700">2026</text>
+</svg>

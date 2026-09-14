@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="./public/favicon-4.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#075B3A" />
+    <meta
+      name="description"
+      content="TEJAYS AGRI — Growing for the future. An integrated dairy, food-processing and nutrition company building a technology-driven circular dairy ecosystem in India."
+    />
+    <title>TEJAYS AGRI — Growing for the Future</title>
+    <script>
+      (function () {
+        try {
+          var stored = window.localStorage.getItem('tejays-theme');
+          var theme = stored === 'dark' ? 'dark' : 'light';
+          var root = document.documentElement;
+          root.setAttribute('data-theme', theme);
+          var meta = document.querySelector('meta[name="theme-color"]');
+          if (meta) {
+            meta.setAttribute('content', theme === 'dark' ? '#07100D' : '#075B3A');
+          }
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
