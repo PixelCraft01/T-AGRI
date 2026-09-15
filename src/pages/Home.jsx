@@ -552,38 +552,38 @@ export default function Home() {
 
           {/* Process */}
           {/* Nutrition Process */}
-<div
-  className="mt-14 overflow-hidden border-y border-line/10 lg:mt-20"
-  data-aos="fade-up"
-  data-aos-delay="120"
->
-  <div className="grid !grid-cols-2 lg:!grid-cols-4">
+          <div
+            className="mt-14 overflow-hidden border-y border-line/10 lg:mt-20"
+            data-aos="fade-up"
+            data-aos-delay="120"
+          >
+            <div className="grid !grid-cols-2 lg:!grid-cols-4">
 
-    {[
-      {
-        no: '01',
-        title: 'Cheese',
-        text: 'Milk transformed into high-value dairy products.'
-      },
-      {
-        no: '02',
-        title: 'Whey',
-        text: 'Recovering valuable whey instead of treating it as waste.'
-      },
-      {
-        no: '03',
-        title: 'Protein',
-        text: 'Converting whey into functional protein ingredients.'
-      },
-      {
-        no: '04',
-        title: 'Nutrition',
-        text: 'Creating premium nutrition applications and products.'
-      }
-    ].map((item, index) => (
-      <div
-        key={item.no}
-        className={`
+              {[
+                {
+                  no: '01',
+                  title: 'Cheese',
+                  text: 'Milk transformed into high-value dairy products.'
+                },
+                {
+                  no: '02',
+                  title: 'Whey',
+                  text: 'Recovering valuable whey instead of treating it as waste.'
+                },
+                {
+                  no: '03',
+                  title: 'Protein',
+                  text: 'Converting whey into functional protein ingredients.'
+                },
+                {
+                  no: '04',
+                  title: 'Nutrition',
+                  text: 'Creating premium nutrition applications and products.'
+                }
+              ].map((item, index) => (
+                <div
+                  key={item.no}
+                  className={`
           group
           relative
           min-w-0
@@ -607,43 +607,43 @@ export default function Home() {
 
           lg:last:border-r-0
         `}
-      >
+                >
 
-        {/* NUMBER + ARROW */}
-        <div className="flex items-start justify-between gap-2">
+                  {/* NUMBER + ARROW */}
+                  <div className="flex items-start justify-between gap-2">
 
-          <span className="font-display text-xs font-extrabold tracking-[0.2em] text-brand/60 sm:text-sm">
-            {item.no}
-          </span>
+                    <span className="font-display text-xs font-extrabold tracking-[0.2em] text-brand/60 sm:text-sm">
+                      {item.no}
+                    </span>
 
-          <FiArrowUpRight
-            size={18}
-            className="shrink-0 text-line/40 transition-all duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-brand sm:h-5 sm:w-5"
-          />
+                    <FiArrowUpRight
+                      size={18}
+                      className="shrink-0 text-line/40 transition-all duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-brand sm:h-5 sm:w-5"
+                    />
 
-        </div>
+                  </div>
 
-        {/* CONTENT */}
-        <div className="mt-10 sm:mt-14 lg:mt-20">
+                  {/* CONTENT */}
+                  <div className="mt-10 sm:mt-14 lg:mt-20">
 
-          <h3 className="font-display text-xl font-extrabold leading-tight tracking-tight text-ink sm:text-2xl lg:text-3xl">
-            {item.title}
-          </h3>
+                    <h3 className="font-display text-xl font-extrabold leading-tight tracking-tight text-ink sm:text-2xl lg:text-3xl">
+                      {item.title}
+                    </h3>
 
-          <p className="mt-3 max-w-[230px] text-[11px] leading-relaxed text-muted sm:text-sm">
-            {item.text}
-          </p>
+                    <p className="mt-3 max-w-[230px] text-[11px] leading-relaxed text-muted sm:text-sm">
+                      {item.text}
+                    </p>
 
-        </div>
+                  </div>
 
-        {/* HOVER LINE */}
-        <div className="absolute bottom-0 left-0 h-0.5 w-0 bg-brand transition-all duration-500 group-hover:w-full" />
+                  {/* HOVER LINE */}
+                  <div className="absolute bottom-0 left-0 h-0.5 w-0 bg-brand transition-all duration-500 group-hover:w-full" />
 
-      </div>
-    ))}
+                </div>
+              ))}
 
-  </div>
-</div>
+            </div>
+          </div>
 
           {/* Footer */}
           <div

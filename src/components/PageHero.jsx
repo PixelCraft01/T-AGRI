@@ -22,9 +22,8 @@ export default function PageHero({
     <div
       data-aos="fade-up"
       data-aos-delay="260"
-      className={`mt-10 flex flex-col gap-4 sm:flex-row sm:items-center ${
-        center ? 'sm:justify-center' : ''
-      }`}
+      className={`mt-10 flex flex-col gap-4 sm:flex-row sm:items-center ${center ? 'sm:justify-center' : ''
+        }`}
     >
       {primary && (
         <Link
@@ -38,11 +37,10 @@ export default function PageHero({
       {secondary && (
         <Link
           to={secondary.to}
-          className={`group flex items-center justify-center gap-2 rounded-full border px-7 py-4 text-xs font-bold uppercase tracking-[0.2em] transition-all duration-300 hover:-translate-y-0.5 ${
-            variant === 'dark' || variant === 'full'
-              ? 'border-white/40 text-white hover:bg-white/10'
-              : 'border-line/20 text-ink hover:border-brand hover:text-brand'
-          }`}
+          className={`group flex items-center justify-center gap-2 rounded-full border px-7 py-4 text-xs font-bold uppercase tracking-[0.2em] transition-all duration-300 hover:-translate-y-0.5 ${variant === 'dark' || variant === 'full'
+            ? 'border-white/40 text-white hover:bg-white/10'
+            : 'border-line/20 text-ink hover:border-brand hover:text-brand'
+            }`}
         >
           {secondary.label}
           <FiArrowUpRight className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
@@ -75,9 +73,8 @@ export default function PageHero({
             {eyebrow && (
               <p
                 data-aos="fade-up"
-                className={`mb-6 flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.3em] text-[#72B943] ${
-                  center ? 'justify-center' : ''
-                }`}
+                className={`mb-6 flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.3em] text-[#72B943] ${center ? 'justify-center' : ''
+                  }`}
               >
                 {!center && <span className="h-px w-10 bg-current" aria-hidden="true" />}
                 {eyebrow}
@@ -86,9 +83,8 @@ export default function PageHero({
             <h1
               data-aos="fade-up"
               data-aos-delay="90"
-              className={`font-display text-[40px] font-extrabold leading-[1.03] tracking-tight sm:text-6xl lg:text-[74px] ${
-                center ? 'mx-auto' : ''
-              }`}
+              className={`font-display text-[40px] font-extrabold leading-[1.03] tracking-tight sm:text-6xl lg:text-[74px] ${center ? 'mx-auto' : ''
+                }`}
             >
               {title}
             </h1>
@@ -96,9 +92,8 @@ export default function PageHero({
               <p
                 data-aos="fade-up"
                 data-aos-delay="180"
-                className={`mt-8 max-w-xl text-base leading-relaxed text-[#C9DED5] sm:text-lg ${
-                  center ? 'mx-auto' : ''
-                }`}
+                className={`mt-8 max-w-xl text-base leading-relaxed text-[#C9DED5] sm:text-lg ${center ? 'mx-auto' : ''
+                  }`}
               >
                 {description}
               </p>
@@ -142,9 +137,8 @@ export default function PageHero({
             {eyebrow && (
               <p
                 data-aos="fade-up"
-                className={`mb-6 flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.3em] text-[#72B943] ${
-                  center ? 'justify-center' : ''
-                }`}
+                className={`mb-6 flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.3em] text-[#72B943] ${center ? 'justify-center' : ''
+                  }`}
               >
                 {!center && <span className="h-px w-10 bg-current" aria-hidden="true" />}
                 {eyebrow}
@@ -153,9 +147,8 @@ export default function PageHero({
             <h1
               data-aos="fade-up"
               data-aos-delay="90"
-              className={`font-display text-[40px] font-extrabold leading-[1.04] tracking-tight sm:text-6xl lg:text-[70px] ${
-                center ? 'mx-auto' : ''
-              }`}
+              className={`font-display text-[40px] font-extrabold leading-[1.04] tracking-tight sm:text-6xl lg:text-[70px] ${center ? 'mx-auto' : ''
+                }`}
             >
               {title}
             </h1>
@@ -163,9 +156,8 @@ export default function PageHero({
               <p
                 data-aos="fade-up"
                 data-aos-delay="180"
-                className={`mt-8 max-w-xl text-base leading-relaxed text-[#A9C4B8] sm:text-lg ${
-                  center ? 'mx-auto' : ''
-                }`}
+                className={`mt-8 max-w-xl text-base leading-relaxed text-[#A9C4B8] sm:text-lg ${center ? 'mx-auto' : ''
+                  }`}
               >
                 {description}
               </p>
@@ -200,25 +192,33 @@ export default function PageHero({
           className="pointer-events-none absolute -right-40 -top-40 h-[480px] w-[480px] rounded-full bg-[#075B3A]/[0.06] blur-3xl"
           aria-hidden="true"
         />
-        <div className="relative mx-auto w-full max-w-[1400px] px-4 pb-16 pt-[130px] sm:px-6 lg:px-10 lg:pb-20 lg:pt-[160px]">
-          <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-14">
-            <div className="lg:col-span-6">
+
+        <div className="relative mx-auto w-full max-w-[1400px] px-4 pb-14 pt-[120px] sm:px-6 lg:px-10 lg:pb-16 lg:pt-[145px]">
+          <div className="grid items-start gap-10 lg:grid-cols-12 lg:gap-12">
+
+            {/* CONTENT */}
+            <div className="lg:col-span-7 lg:pt-2">
               {eyebrow && (
                 <p
                   data-aos="fade-up"
                   className="mb-6 flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.3em] text-brand"
                 >
-                  <span className="h-px w-10 bg-current" aria-hidden="true" />
+                  <span
+                    className="h-px w-10 bg-current"
+                    aria-hidden="true"
+                  />
                   {eyebrow}
                 </p>
               )}
+
               <h1
                 data-aos="fade-up"
                 data-aos-delay="90"
-                className="font-display text-[38px] font-extrabold leading-[1.04] tracking-tight text-ink sm:text-5xl lg:text-[62px]"
+                className="font-display text-[38px] font-extrabold leading-[1.04] tracking-tight text-ink sm:text-5xl lg:text-[64px]"
               >
                 {title}
               </h1>
+
               {description && (
                 <p
                   data-aos="fade-up"
@@ -228,16 +228,30 @@ export default function PageHero({
                   {description}
                 </p>
               )}
+
               {ctas}
-              {children && <div className="mt-8">{children}</div>}
+
+              {children && (
+                <div className="mt-8">
+                  {children}
+                </div>
+              )}
             </div>
-            <div className="lg:col-span-6" data-aos="zoom-in" data-aos-delay="220">
-              <div className="relative mx-auto max-w-[540px] lg:max-w-none">
+
+            {/* IMAGE */}
+            <div
+              className="lg:col-span-5"
+              data-aos="zoom-in"
+              data-aos-delay="220"
+            >
+              <div className="relative mx-auto max-w-[440px] lg:ml-auto lg:max-w-[450px]">
+
                 <div
-                  className="absolute -left-4 -top-4 h-full w-full rounded-[28px] border border-brand/25"
+                  className="absolute -left-3 -top-3 h-full w-full rounded-[24px] border border-brand/25"
                   aria-hidden="true"
                 />
-                <div className="relative overflow-hidden rounded-[28px] shadow-[0_36px_72px_rgb(var(--shadow-ink)/0.16)]">
+
+                <div className="relative overflow-hidden rounded-[24px] shadow-[0_28px_60px_rgb(var(--shadow-ink)/0.14)]">
                   {image ? (
                     <img
                       src={assetPath(image)}
@@ -252,8 +266,10 @@ export default function PageHero({
                     </div>
                   )}
                 </div>
+
               </div>
             </div>
+
           </div>
         </div>
       </section>

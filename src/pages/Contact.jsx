@@ -83,10 +83,7 @@ export default function Contact() {
   }
 
   const handlePhoneChange = (e) => {
-    const value = e.target.value
-      .replace(/\D/g, '')
-      .slice(0, 10)
-
+    const value = e.target.value.replace(/\D/g, '').slice(0, 10)
     setPhone(value)
   }
 
@@ -114,8 +111,7 @@ Enquiry type: ${selectedEnquiry}
 
 ${messageText}`
 
-    window.location.href =
-      `mailto:${contactInfo.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+    window.location.href = `mailto:${contactInfo.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
   }
 
   const messageWordCount = getWordCount(message)
@@ -138,17 +134,13 @@ ${messageText}`
 
       <section className="bg-pageBg pt-6">
         <div className="mx-auto w-full max-w-[1400px] px-4 pb-6 sm:px-6 lg:px-10">
-          <div className="grid gap-5 md:grid-cols-3">
+          <div className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-3 md:gap-5">
             {contactCards.map((c, i) => (
               <a
                 key={c.title}
                 href={c.href}
                 target={c.href.startsWith('http') ? '_blank' : undefined}
-                rel={
-                  c.href.startsWith('http')
-                    ? 'noopener noreferrer'
-                    : undefined
-                }
+                rel={c.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                 data-aos="fade-up"
                 data-aos-delay={i * 80}
                 className="group rounded-2xl border border-line/10 bg-surface p-7 transition-all duration-300 hover:-translate-y-1 hover:border-brand/30 hover:shadow-card"
@@ -195,8 +187,8 @@ ${messageText}`
                     type="button"
                     onClick={() => setType(t.id)}
                     className={`rounded-full border px-4 py-2 text-[11px] font-bold uppercase tracking-[0.14em] transition-all duration-300 ${type === t.id
-                        ? 'border-brand bg-[#075B3A] text-white'
-                        : 'border-line/15 bg-surface text-ink hover:border-brand/60 hover:text-brand'
+                      ? 'border-brand bg-[#075B3A] text-white'
+                      : 'border-line/15 bg-surface text-ink hover:border-brand/60 hover:text-brand'
                       }`}
                   >
                     {t.label}
@@ -208,7 +200,6 @@ ${messageText}`
                 onSubmit={handleSubmit}
                 className="mt-8 grid gap-4 sm:grid-cols-2"
               >
-
                 {/* NAME */}
                 <input
                   name="name"
@@ -268,9 +259,9 @@ ${messageText}`
                     </span>
 
                     <span
-                      className={`text-xs font-semibold ${messageWordCount >= 190
-                          ? 'text-red-500'
-                          : 'text-inkMuted'
+                      className={`text-xs font-semibold ${messageWordCount >= 45
+                        ? 'text-red-500'
+                        : 'text-inkMuted'
                         }`}
                     >
                       {messageWordCount}/50 words
