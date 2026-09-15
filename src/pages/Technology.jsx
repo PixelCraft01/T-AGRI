@@ -187,8 +187,8 @@ function PageButton({
     <a
       href={`#${to}`}
       className={`inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 text-sm font-bold transition-all duration-300 hover:-translate-y-0.5 ${secondary
-          ? 'border border-white/20 bg-white/5 text-white hover:bg-white/10'
-          : 'bg-[#72B943] text-[#07100D] hover:bg-[#8aca61]'
+        ? 'border border-white/20 bg-white/5 text-white hover:bg-white/10'
+        : 'bg-[#72B943] text-[#07100D] hover:bg-[#8aca61]'
         }`}
     >
       {children}

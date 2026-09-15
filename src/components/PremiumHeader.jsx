@@ -735,92 +735,41 @@ function PremiumHeader() {
 
             <div className="flex shrink-0 items-center gap-2">
               {/* ======================================================
-                  LIGHT + DARK ICONS
+                  LIGHT + DARK ICONS — SINGLE RESPONSIVE TOGGLE
+                  One toggle only: desktop + tablet + mobile.
               ======================================================= */}
 
-              <div
-                className="
-                  hidden
-                  items-center
-                  gap-1
-                  rounded-full
-                  border
-                  border-line/10
-                  bg-surface/70
-                  p-1
-                  sm:flex
-                "
-              >
+              <div className="flex items-center gap-1 rounded-full border border-line/10 bg-surface/70 p-1 shadow-[0_8px_25px_rgb(var(--shadow-ink)/0.08)] backdrop-blur-md">
                 {/* LIGHT */}
-
                 <button
                   type="button"
                   title="Light mode"
                   aria-label="Switch to light mode"
                   aria-pressed={theme === "light"}
-                  onClick={() =>
-                    changeTheme("light")
-                  }
-                  className={`
-                    group
-                    flex
-                    h-8
-                    w-8
-                    items-center
-                    justify-center
-                    rounded-full
-                    transition-all
-                    duration-300
-                    ${theme === "light"
-                      ? "bg-brandFill text-white"
-                      : "text-ink/50 hover:bg-brand/10 hover:text-brand"
-                    }
-                  `}
+                  onClick={() => changeTheme("light")}
+                  className={`group flex h-8 w-8 items-center justify-center rounded-full transition-all duration-300 ease-out focus:outline-none focus:ring-2 focus:ring-brand/30 ${
+                    theme === "light"
+                      ? "bg-brandFill text-white shadow-[0_4px_14px_rgb(var(--brand)/0.28)]"
+                      : "text-ink/50 hover:-translate-y-0.5 hover:bg-brand/10 hover:text-brand hover:shadow-sm active:scale-90"
+                  }`}
                 >
-                  <FiSun
-                    className="
-                      text-[15px]
-                      transition-transform
-                      duration-500
-                      group-hover:rotate-45
-                    "
-                  />
+                  <FiSun className="text-[15px] transition-all duration-500 group-hover:rotate-45 group-hover:scale-110" />
                 </button>
 
                 {/* DARK */}
-
                 <button
                   type="button"
                   title="Dark mode"
                   aria-label="Switch to dark mode"
                   aria-pressed={theme === "dark"}
-                  onClick={() =>
-                    changeTheme("dark")
-                  }
-                  className={`
-                    group
-                    flex
-                    h-8
-                    w-8
-                    items-center
-                    justify-center
-                    rounded-full
-                    transition-all
-                    duration-300
-                    ${theme === "dark"
-                      ? "bg-[#07100D] text-accent"
-                      : "text-ink/50 hover:bg-[#07100D]/10 hover:text-[#07100D]"
-                    }
-                  `}
+                  onClick={() => changeTheme("dark")}
+                  className={`group flex h-8 w-8 items-center justify-center rounded-full transition-all duration-300 ease-out focus:outline-none focus:ring-2 focus:ring-[#07100D]/20 ${
+                    theme === "dark"
+                      ? "bg-[#07100D] text-accent shadow-[0_4px_14px_rgba(7,16,13,0.25)]"
+                      : "text-ink/50 hover:-translate-y-0.5 hover:bg-[#07100D]/10 hover:text-[#07100D] hover:shadow-sm active:scale-90"
+                  }`}
                 >
-                  <FiMoon
-                    className="
-                      text-[15px]
-                      transition-transform
-                      duration-500
-                      group-hover:-rotate-12
-                    "
-                  />
+                  <FiMoon className="text-[15px] transition-all duration-500 group-hover:-rotate-12 group-hover:scale-110" />
                 </button>
               </div>
 
@@ -1225,97 +1174,6 @@ function PremiumHeader() {
                 Contact
                 <FiArrowUpRight className="text-[#72B943]" />
               </Link>
-
-              {/* ====================================================
-                  MOBILE THEME
-              ===================================================== */}
-
-              <div className="mt-5">
-                <p
-                  className="
-                    mb-3
-                    text-[8px]
-                    font-bold
-                    uppercase
-                    tracking-[0.25em]
-                    text-ink/40
-                  "
-                >
-                  Appearance
-                </p>
-
-                <div className="flex gap-2">
-                  {/* LIGHT */}
-
-                  <button
-                    type="button"
-                    aria-label="Switch to light mode"
-                    aria-pressed={theme === "light"}
-                    onClick={() =>
-                      changeTheme("light")
-                    }
-                    className={`
-                      flex
-                      flex-1
-                      items-center
-                      justify-center
-                      gap-2
-                      rounded-full
-                      border
-                      px-4
-                      py-3
-                      text-[8px]
-                      font-bold
-                      uppercase
-                      tracking-[0.15em]
-                      transition-all
-                      duration-300
-                      ${theme === "light"
-                        ? "border-brandFill bg-brandFill text-white"
-                        : "border-line/10 text-ink/60 hover:border-brand/60 hover:text-brand"
-                      }
-                    `}
-                  >
-                    <FiSun />
-                    Light
-                  </button>
-
-                  {/* DARK */}
-
-                  <button
-                    type="button"
-                    aria-label="Switch to dark mode"
-                    aria-pressed={theme === "dark"}
-                    onClick={() =>
-                      changeTheme("dark")
-                    }
-                    className={`
-                      flex
-                      flex-1
-                      items-center
-                      justify-center
-                      gap-2
-                      rounded-full
-                      border
-                      px-4
-                      py-3
-                      text-[8px]
-                      font-bold
-                      uppercase
-                      tracking-[0.15em]
-                      transition-all
-                      duration-300
-                      ${theme === "dark"
-                        ? "border-[#07100D] bg-[#07100D] text-accent"
-                        : "border-line/10 text-ink/60 hover:border-brand/60 hover:text-brand"
-                      }
-                    `}
-                  >
-                    <FiMoon />
-                    Dark
-                  </button>
-                </div>
-              </div>
 
               {/* CTA */}
 
