@@ -207,9 +207,10 @@ export default function Technology() {
         <div
           className="absolute inset-0 opacity-40"
           style={{
-            backgroundImage:
-              'linear-gradient(rgba(114,185,67,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(114,185,67,0.08) 1px, transparent 1px)',
-            backgroundSize: '56px 56px'
+            backgroundImage: `
+      linear-gradient(rgba(7,16,13,0.72), rgba(7,16,13,0.72)),
+      url('./public/images/Technology_hero.jpg')
+    `
           }}
         />
 
@@ -261,6 +262,7 @@ export default function Technology() {
           </div>
         </div>
       </section>
+
       {/* =====================================================
           SENSING LAYERS
       ===================================================== */}
@@ -340,6 +342,7 @@ export default function Technology() {
 
         </div>
       </section>
+
       {/* =====================================================
           MONITORING
       ===================================================== */}
@@ -427,6 +430,7 @@ export default function Technology() {
           </div>
         </div>
       </section>
+
       {/* =====================================================
           AI COMMAND CENTRE
       ===================================================== */}
@@ -643,7 +647,6 @@ export default function Technology() {
       {/* =====================================================
           CTA
       ===================================================== */}
-
       <section className="relative overflow-hidden bg-[#075B3A] text-center text-white">
         <div className="pointer-events-none absolute -right-32 -top-32 h-96 w-96 rounded-full bg-[#72B943]/20 blur-3xl" />
 

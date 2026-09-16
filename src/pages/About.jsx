@@ -98,7 +98,7 @@ export default function About() {
           HERO
       ========================================================= */}
       <PageHero
-        variant="split"
+        variant="full"
         image="/images/tejays-agri-hero3.jpg"
         imageAlt="TEJAYS AGRI integrated dairy ecosystem"
         eyebrow="About TEJAYS AGRI"
@@ -106,7 +106,7 @@ export default function About() {
           <>
             Building value across the
             <br />
-            <span className="text-brand">dairy ecosystem.</span>
+            <span className="text-[#72B943]">dairy ecosystem.</span>
           </>
         }
         description="TEJAYS AGRI is being built around an integrated model — connecting dairy farming, technology, processing, food innovation and nutrition into one scalable ecosystem."
