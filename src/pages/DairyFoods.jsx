@@ -38,15 +38,15 @@ export default function DairyFoods() {
     <>
       {/* HERO */}
       <PageHero
-        variant="split"
+        variant="full"
         image="/images/ecosystem/dairy-products.png"
-        imageAlt="TEJAYS AGRI planned dairy product range including milk, yogurt and paneer"
+        imageAlt="Whey recovery and protein nutrition concept"
         eyebrow="Tejays Agri / Dairy & Foods"
         title={
           <>
             A modern dairy range,
             <br />
-            <span className="text-brand">rooted in tradition.</span>
+            <span className="text-[#72B943]">rooted in tradition.</span>
           </>
         }
         description="Everyday dairy categories built on clean milk and modern processing — with zero-compromise quality and food technology at the core."

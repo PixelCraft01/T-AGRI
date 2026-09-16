@@ -101,7 +101,7 @@ export default function Agriculture() {
           <>
             Precision agriculture to
             <br />
-            <span className="text-[#E7B84B]">secure the feed chain.</span>
+            <span className="text-[#72B943]">secure the feed chain.</span>
           </>
         }
         description="Feed is the quiet foundation of the entire dairy. Soil, water and crop science keep fodder quality ahead of demand — closing the loop with every nutrient."
