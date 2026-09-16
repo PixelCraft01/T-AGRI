@@ -187,12 +187,11 @@ export default function Home() {
       {/* =====================================================
           POSITIONING
       ===================================================== */}
-
       <section className="bg-pageBg">
         <div className="mx-auto w-full max-w-[1400px] px-4 py-20 sm:px-6 sm:py-24 lg:px-10 lg:py-28">
 
           {/* Heading */}
-          <div className="mx-auto max-w-4xl text-left lg:text-center">
+          <div className="mx-0 w-full max-w-4xl text-left">
             <SectionHeading
               align="left"
               eyebrow="Positioning"
@@ -249,7 +248,7 @@ export default function Home() {
       <section className="border-t border-line/10 bg-surface">
         <div className="mx-auto w-full max-w-[1400px] px-4 py-16 sm:px-6 sm:py-20 lg:px-10 lg:py-24">
 
-          <div className="flex flex-col gap-6 lg:items-center lg:text-center">
+          <div className="flex flex-col items-start gap-6 text-left">
 
             <SectionHeading
               eyebrow="The Ecosystem"

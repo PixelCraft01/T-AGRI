@@ -143,7 +143,7 @@ ${messageText}`
                 rel={c.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                 data-aos="fade-up"
                 data-aos-delay={i * 80}
-                className="group rounded-2xl border border-line/10 bg-surface p-7 transition-all duration-300 hover:-translate-y-1 hover:border-brand/30 hover:shadow-card"
+                className={`group rounded-2xl border border-line/10 bg-surface p-7 transition-all duration-300 hover:-translate-y-1 hover:border-brand/30 hover:shadow-card ${i === 2 ? 'col-span-2 md:col-span-1' : ''}`}
               >
                 <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-tint text-brand transition-colors duration-300 group-hover:bg-[#075B3A] group-hover:text-white">
                   <c.icon className="text-2xl" />
