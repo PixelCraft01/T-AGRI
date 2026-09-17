@@ -41,19 +41,33 @@ export default function Sustainability() {
   return (
     <>
       <PageHero
-        variant="dark"
+        variant="full"
+        image="/images/sustainability_hero_1.jpg"
+        imageAlt="TEJAYS AGRI circular dairy ecosystem with renewable energy, water recycling and sustainable agriculture"
         eyebrow="Tejays Agri / Sustainability"
         title={
           <>
             The TEJAYS AGRI
             <br />
-            <span className="text-[#72B943]">circular dairy ecosystem.</span>
+            <span className="text-[#72B943]">
+              circular dairy ecosystem.
+            </span>
           </>
         }
         description="Manure becomes energy. Digestate becomes fertilizer. Water is harvested and recycled. The ecosystem is designed so what leaves one stage becomes the input of the next."
-        primary={{ label: 'Precision Agriculture', to: '/agriculture' }}
-        secondary={{ label: 'Talk to TEJAYS AGRI', to: '/contact' }}
-        meta={['Circular economy', 'Energy · Water · Soil', 'Proposed / planned systems']}
+        primary={{
+          label: 'Precision Agriculture',
+          to: '/agriculture'
+        }}
+        secondary={{
+          label: 'Talk to TEJAYS AGRI',
+          to: '/contact'
+        }}
+        meta={[
+          'Circular economy',
+          'Energy · Water · Soil',
+          'Proposed / planned systems'
+        ]}
       />
 
       <section className="bg-pageBg">
@@ -102,33 +116,44 @@ export default function Sustainability() {
       </section>
 
       <section className="border-t border-line/10 bg-surface">
-        <div className="mx-auto w-full max-w-[1400px] px-4 py-20 sm:px-6 sm:py-24 lg:px-10 lg:py-28">
+        <div className="mx-auto w-full max-w-[1400px] px-4 py-16 sm:px-6 sm:py-20 lg:px-10 lg:py-24">
           <SectionHeading
             eyebrow="Campus Systems"
             title="Sustainability as infrastructure."
             description="Eight proposed systems that turn environmental responsibility into operational strength."
           />
-          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+
+          <div className="mt-10 grid grid-cols-2 gap-3 sm:mt-12 sm:gap-5 lg:grid-cols-4">
             {initiatives.map((s, i) => (
               <div
                 key={s.title}
                 data-aos="fade-up"
                 data-aos-delay={i * 50}
-                className="group rounded-2xl border border-line/10 bg-pageBg p-6 transition-all duration-300 hover:-translate-y-1 hover:border-brand/30 hover:bg-surface hover:shadow-card"
+                className="group relative overflow-hidden rounded-2xl border border-line/10 bg-pageBg p-4 transition-all duration-300 hover:-translate-y-1 hover:border-brand/30 hover:bg-surface hover:shadow-card sm:p-6"
               >
-                <s.icon className="text-2xl text-brand transition-transform duration-300 group-hover:scale-110" />
-                <h3 className="mt-4 text-sm font-bold uppercase tracking-[0.1em] text-ink">
+                {/* Subtle hover glow */}
+                <div className="pointer-events-none absolute -right-8 -top-8 h-20 w-20 rounded-full bg-brand/5 blur-2xl transition-all duration-500 group-hover:bg-brand/15" />
+
+                {/* Icon */}
+                <div className="relative flex h-10 w-10 items-center justify-center rounded-xl border border-brand/15 bg-brand/5 transition-all duration-300 group-hover:border-brand/30 group-hover:bg-brand/10 sm:h-12 sm:w-12">
+                  <s.icon className="text-xl text-brand transition-transform duration-300 group-hover:scale-110 sm:text-2xl" />
+                </div>
+
+                {/* Content */}
+                <h3 className="relative mt-4 text-[11px] font-bold uppercase leading-snug tracking-[0.08em] text-ink sm:text-sm sm:tracking-[0.1em]">
                   {s.title}
                 </h3>
-                <p className="mt-1.5 text-xs leading-relaxed text-inkMuted">
+
+                <p className="relative mt-2 text-[11px] leading-relaxed text-inkMuted sm:text-xs">
                   {s.desc}
                 </p>
               </div>
             ))}
           </div>
+
           <p
             data-aos="fade-up"
-            className="mt-8 text-xs font-semibold uppercase tracking-[0.16em] text-inkSoft"
+            className="mt-7 text-[10px] font-semibold uppercase leading-relaxed tracking-[0.12em] text-inkSoft sm:mt-8 sm:text-xs sm:tracking-[0.16em]"
           >
             Sustainability systems proposed / planned for the integrated campus
           </p>
