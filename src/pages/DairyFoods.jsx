@@ -8,14 +8,14 @@ import CTASection from '../components/CTASection'
 import FlowChain from '../components/FlowChain'
 
 const products = [
-  { name: 'Milk', desc: 'Fresh, hygienically handled and cold-chained.', status: 'Planned', image: './public/images/products/milk.jpg' },
-  { name: 'Curd', desc: 'Traditional set curd, cultured daily.', status: 'Planned', image: './public/images/products/curd.jpg' },
-  { name: 'Greek Yogurt', desc: 'Strained, protein-forward yogurt.', status: 'Planned', image: './public/images/products/greek-yogurt.jpg' },
-  { name: 'Paneer', desc: 'Fresh-pressed, high-quality paneer.', status: 'Planned', image: './public/images/products/paneer.jpg' },
-  { name: 'Ghee', desc: 'Clarified butter made the traditional way.', status: 'Planned', image: './public/images/products/ghee.jpg' },
-  { name: 'Butter', desc: 'Creamy table butter from our own milk.', status: 'Planned', image: './public/images/products/butter.jpg' },
-  { name: 'Lassi', desc: 'Refreshing classic drinks.', status: 'Planned', image: './public/images/products/lassi.jpg' },
-  { name: 'Buttermilk', desc: 'Light, probiotic everyday refreshment.', status: 'Planned', image: './public/images/products/buttermilk.jpg' }
+  { name: 'Milk', desc: 'Fresh, hygienically handled and cold-chained.', status: 'Planned', image: `${import.meta.env.BASE_URL}images/products/milk.jpg` },
+  { name: 'Curd', desc: 'Traditional set curd, cultured daily.', status: 'Planned', image: `${import.meta.env.BASE_URL}images/products/curd.jpg` },
+  { name: 'Greek Yogurt', desc: 'Strained, protein-forward yogurt.', status: 'Planned', image: `${import.meta.env.BASE_URL}images/products/greek-yogurt.jpg` },
+  { name: 'Paneer', desc: 'Fresh-pressed, high-quality paneer.', status: 'Planned', image: `${import.meta.env.BASE_URL}images/products/paneer.jpg` },
+  { name: 'Ghee', desc: 'Clarified butter made the traditional way.', status: 'Planned', image: `${import.meta.env.BASE_URL}images/products/ghee.jpg` },
+  { name: 'Butter', desc: 'Creamy table butter from our own milk.', status: 'Planned', image: `${import.meta.env.BASE_URL}images/products/butter.jpg` },
+  { name: 'Lassi', desc: 'Refreshing classic drinks.', status: 'Planned', image: `${import.meta.env.BASE_URL}images/products/lassi.jpg` },
+  { name: 'Buttermilk', desc: 'Light, probiotic everyday refreshment.', status: 'Planned', image: `${import.meta.env.BASE_URL}images/products/Buttermilk_1.jpg` }
 ]
 
 const processCapabilities = [
