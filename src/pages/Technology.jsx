@@ -17,6 +17,7 @@ import {
   FiHeart,
   FiArrowRight
 } from 'react-icons/fi'
+import PageHero from '../components/PageHero'
 
 const sensingLayers = [
   {
@@ -203,65 +204,37 @@ export default function Technology() {
       {/* =====================================================
           HERO
       ===================================================== */}
-      <section className="relative overflow-hidden bg-[#07100D] text-white">
-        <div
-          className="absolute inset-0 opacity-40"
-          style={{
-            backgroundImage: `
-      linear-gradient(rgba(7,16,13,0.72), rgba(7,16,13,0.72)),
-      url('./public/images/Technology_hero.jpg')
-    `
-          }}
-        />
 
-        <div className="absolute -right-32 top-10 h-96 w-96 rounded-full bg-brand/30 blur-3xl" />
+      <PageHero
+        variant="full"
+        image="/images/Technology_hero.jpg"
+        imageAlt="TEJAYS AGRI technology and AI-powered dairy ecosystem"
+        eyebrow="Tejays Agri / Technology"
+        title={
+          <>
+            Sensing the herd.
+            <br />
+            <span className="text-[#72B943]">
+              Learning the system.
+            </span>
+          </>
+        }
+        description="A planned technology ecosystem connecting every layer of the dairy — from sensors on the animal to an AI command centre that sees the whole operation."
+        primary={{
+          label: 'Smart Dairy',
+          to: '/smart-dairy'
+        }}
+        secondary={{
+          label: 'Build With Us',
+          to: '/business'
+        }}
+        meta={[
+          'AI · IoT · RFID',
+          'Computer vision',
+          'Planned / proposed stack'
+        ]}
+      />
 
-        <div className="absolute -left-32 bottom-0 h-80 w-80 rounded-full bg-[#72B943]/10 blur-3xl" />
-
-        <div className="relative mx-auto w-full max-w-[1400px] px-4 pb-20 pt-32 sm:px-6 sm:pb-24 sm:pt-40 lg:px-10 lg:pb-32">
-          <div
-            className="max-w-5xl"
-            data-aos="fade-up"
-          >
-            <Eyebrow dark>
-              Tejays Agri / Technology
-            </Eyebrow>
-
-            <h1 className="mt-5 font-display text-5xl font-extrabold leading-[0.95] tracking-[-0.045em] sm:text-6xl lg:text-8xl">
-              Sensing the herd.
-              <br />
-              <span className="text-[#72B943]">
-                Learning the system.
-              </span>
-            </h1>
-
-            <p className="mt-7 max-w-3xl text-base leading-7 text-[#C5D6CE] sm:text-xl sm:leading-8">
-              A planned technology ecosystem connecting every layer of
-              the dairy — from sensors on the animal to an AI command
-              centre that sees the whole operation.
-            </p>
-
-            <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-              <PageButton to="/smart-dairy">
-                Smart Dairy
-              </PageButton>
-
-              <PageButton
-                to="/business"
-                secondary
-              >
-                Build With Us
-              </PageButton>
-            </div>
-
-            <div className="mt-10 flex flex-wrap gap-x-7 gap-y-3 text-[10px] font-bold uppercase tracking-[0.18em] text-[#A9C4B8]">
-              <span>AI · IoT · RFID</span>
-              <span>Computer vision</span>
-              <span>Planned / proposed stack</span>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* =====================================================
           SENSING LAYERS
