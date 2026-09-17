@@ -99,7 +99,7 @@ export default function About() {
       ========================================================= */}
       <PageHero
         variant="full"
-        image="/images/tejays-agri-hero3.jpg"
+        image="/images/about_hero-2.jpg"
         imageAlt="TEJAYS AGRI integrated dairy ecosystem"
         eyebrow="About TEJAYS AGRI"
         title={
