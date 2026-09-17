@@ -72,20 +72,33 @@ export default function Campus() {
     <>
       {/* HERO */}
       <PageHero
-        variant="split"
-        image="/images/hero-campus.jpg"
-        imageAlt="TEJAYS AGRI campus masterplan"
+        variant="full"
+        image="images/hero-campus_1.jpg"
+        imageAlt="TEJAYS AGRI integrated campus masterplan"
         eyebrow="Tejays Agri / Campus"
         title={
           <>
             One campus,
             <br />
-            <span className="text-brand">the whole ecosystem.</span>
+            <span className="text-[#72B943]">
+              the whole ecosystem.
+            </span>
           </>
         }
         description="The TEJAYS AGRI masterplan brings genetics, feed, dairy, processing and nutrition together on one site — designed end-to-end and phased for the future."
-        primary={{ label: 'See the Ecosystem', to: '/about' }}
-        secondary={{ label: 'Contact TEJAYS AGRI', to: '/contact' }}
+        primary={{
+          label: 'See the Ecosystem',
+          to: '/about'
+        }}
+        secondary={{
+          label: 'Contact TEJAYS AGRI',
+          to: '/contact'
+        }}
+        meta={[
+          'Integrated campus',
+          'Genetics · Dairy · Processing',
+          'Designed for phased growth'
+        ]}
       />
 
       {/* MASTERPLAN ZONES */}
