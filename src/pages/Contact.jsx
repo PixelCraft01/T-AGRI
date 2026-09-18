@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react'
 import {
   FiMail,
   FiPhone,
-  FiMessageCircle,
   FiSend,
   FiMapPin,
   FiClock,
@@ -65,6 +64,7 @@ export default function Contact() {
   const [phone, setPhone] = useState('')
   const [enquiryPreview, setEnquiryPreview] = useState(null)
   const [quickContactOpen, setQuickContactOpen] = useState(false)
+  const [sendSuccess, setSendSuccess] = useState(false)
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' })
@@ -149,6 +149,7 @@ ${data.messageText}
       '_blank',
       'noopener,noreferrer'
     )
+    setSendSuccess(true)
   }
 
   const sendViaEmail = () => {
@@ -159,6 +160,7 @@ ${data.messageText}
 
     window.location.href =
       `mailto:${TEST_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+    setSendSuccess(true)
   }
 
   const messageWordCount = getWordCount(message)
@@ -273,18 +275,27 @@ ${data.messageText}
                 />
 
                 {/* PHONE - ONLY 10 DIGITS */}
-                <input
-                  name="phone"
-                  type="tel"
-                  inputMode="numeric"
-                  maxLength={10}
-                  pattern="[0-9]{10}"
-                  value={phone}
-                  onChange={handlePhoneChange}
-                  placeholder="Phone (+91)"
-                  title="Please enter exactly 10 digits"
-                  className="rounded-xl border border-line/12 bg-pageBg px-4 py-3.5 text-sm text-ink outline-none transition-colors duration-200 placeholder:text-inkSoft focus:border-brand focus:bg-surface"
-                />
+                <div className="flex overflow-hidden rounded-xl border border-line/12 bg-pageBg transition-all duration-200 focus-within:border-brand focus-within:bg-surface focus-within:ring-2 focus-within:ring-brand/10">
+
+  <span className="flex items-center border-r border-line/10 bg-tint/40 px-4 text-sm font-bold text-brand">
+    +91
+  </span>
+
+  <input
+    name="phone"
+    type="tel"
+    inputMode="numeric"
+    autoComplete="tel-national"
+    maxLength={10}
+    pattern="[0-9]{10}"
+    value={phone}
+    onChange={handlePhoneChange}
+    placeholder="Enter 10-digit mobile number"
+    title="Please enter exactly 10 digits"
+    className="min-w-0 flex-1 bg-transparent px-4 py-3.5 text-sm text-ink outline-none placeholder:text-inkSoft"
+  />
+
+</div>
 
                 {/* MESSAGE */}
                 <div className="sm:col-span-2">
@@ -638,116 +649,93 @@ ${data.messageText}
 
 
 
-      {/* ENQUIRY SEND MODAL */}
-      {
-        enquiryPreview && (
-          <div
-            className="fixed inset-0 z-[100] flex items-center justify-center bg-[#07100D]/70 px-4 py-6 backdrop-blur-sm"
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="enquiry-send-title"
-          >
-            <div className="relative max-h-[90vh] w-full max-w-lg overflow-y-auto rounded-3xl border border-line/10 bg-surface shadow-2xl">
-              <button
-                type="button"
-                onClick={() => setEnquiryPreview(null)}
-                className="absolute right-5 top-5 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-pageBg text-ink transition-colors hover:bg-[#075B3A] hover:text-white"
-                aria-label="Close enquiry preview"
-              >
-                <FiX />
-              </button>
+      {/* ENQUIRY SEND / SUCCESS MODAL */}
+      {enquiryPreview && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-[#07100D]/75 px-4 py-6 backdrop-blur-md" role="dialog" aria-modal="true">
+          <div className="relative max-h-[92vh] w-full max-w-xl overflow-hidden rounded-[30px] border border-white/10 bg-surface shadow-[0_30px_100px_rgba(0,0,0,0.35)]">
+            <button type="button" onClick={() => { setEnquiryPreview(null); setSendSuccess(false) }} className="absolute right-5 top-5 z-20 flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur transition hover:bg-white/20" aria-label="Close enquiry">
+              <FiX />
+            </button>
 
-              <div className="bg-[#075B3A] px-7 py-7 text-white sm:px-8">
-                <p className="text-[11px] font-bold uppercase tracking-[0.24em] text-[#BDE89A]">
-                  TEJAYS AGRI
+            {sendSuccess ? (
+              <div className="relative overflow-hidden px-6 py-10 text-center sm:px-10 sm:py-12">
+                <div className="pointer-events-none absolute -right-20 -top-20 h-56 w-56 rounded-full bg-[#72B943]/20 blur-3xl" />
+                <div className="pointer-events-none absolute -bottom-24 -left-20 h-56 w-56 rounded-full bg-[#D9B54A]/10 blur-3xl" />
+
+                <div className="relative mx-auto flex h-24 w-24 items-center justify-center rounded-full bg-[#075B3A] shadow-[0_18px_50px_rgba(7,91,58,0.28)]">
+                  <div className="absolute inset-1.5 rounded-full border border-[#72B943]/40" />
+                  <svg viewBox="0 0 24 24" fill="none" className="relative h-11 w-11 text-white" stroke="currentColor" strokeWidth="2.7" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M5 12.5l4.2 4L19 7" />
+                  </svg>
+                </div>
+
+                <div className="relative mx-auto mt-7 flex w-fit items-center gap-2 rounded-full border border-[#72B943]/20 bg-[#72B943]/10 px-4 py-2">
+                  <span className="h-2 w-2 rounded-full bg-[#72B943]" />
+                  <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#075B3A]">Successfully Submitted</span>
+                </div>
+
+                <h2 className="relative mt-5 font-display text-2xl font-bold tracking-tight text-ink sm:text-3xl">Message Sent Successfully</h2>
+                <p className="relative mx-auto mt-3 max-w-md text-sm leading-6 text-inkMuted">
+                  Thank you for contacting TEJAYS AGRI. Your enquiry has been successfully prepared and sent through your selected channel.
                 </p>
-                <h2
-                  id="enquiry-send-title"
-                  className="mt-2 font-display text-2xl font-bold tracking-tight"
-                >
-                  Your enquiry is ready
-                </h2>
-                <p className="mt-2 text-sm leading-relaxed text-[#D7E8DF]">
-                  Review your details and choose how you want to send them.
-                </p>
+
+                <div className="relative mx-auto mt-7 max-w-md rounded-2xl border border-line/10 bg-pageBg p-4 text-left">
+                  <div className="flex items-center justify-between gap-3">
+                    <div>
+                      <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-inkSoft">Enquiry Type</p>
+                      <p className="mt-1 text-sm font-bold text-brand">{enquiryPreview.selectedEnquiry}</p>
+                    </div>
+                    <span className="rounded-full bg-[#075B3A]/10 px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider text-[#075B3A]">Received</span>
+                  </div>
+                </div>
+
+                <button type="button" onClick={() => { setEnquiryPreview(null); setSendSuccess(false) }} className="relative mt-7 inline-flex min-w-[150px] items-center justify-center rounded-full bg-[#075B3A] px-7 py-3.5 text-xs font-bold uppercase tracking-[0.18em] text-white shadow-lg shadow-[#075B3A]/20 transition hover:-translate-y-0.5 hover:bg-[#043D2A]">Done</button>
+                <p className="relative mt-4 text-[11px] text-inkSoft">TEJAYS AGRI · We’ll get back to you shortly.</p>
               </div>
-
-              <div className="space-y-4 p-7 sm:p-8">
-                <div className="grid gap-3 sm:grid-cols-2">
-                  <div className="rounded-2xl bg-pageBg p-4">
-                    <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-inkSoft">
-                      Name
-                    </p>
-                    <p className="mt-1 break-words text-sm font-semibold text-ink">
-                      {enquiryPreview.name}
-                    </p>
-                  </div>
-
-                  <div className="rounded-2xl bg-pageBg p-4">
-                    <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-inkSoft">
-                      Enquiry
-                    </p>
-                    <p className="mt-1 break-words text-sm font-semibold text-brand">
-                      {enquiryPreview.selectedEnquiry}
-                    </p>
-                  </div>
-
-                  <div className="rounded-2xl bg-pageBg p-4">
-                    <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-inkSoft">
-                      Email
-                    </p>
-                    <p className="mt-1 break-all text-sm font-semibold text-ink">
-                      {enquiryPreview.email}
-                    </p>
-                  </div>
-
-                  <div className="rounded-2xl bg-pageBg p-4">
-                    <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-inkSoft">
-                      Phone
-                    </p>
-                    <p className="mt-1 text-sm font-semibold text-ink">
-                      {enquiryPreview.phoneNumber}
-                    </p>
-                  </div>
+            ) : (
+              <>
+                <div className="bg-[#075B3A] px-7 py-7 text-white sm:px-8">
+                  <p className="text-[11px] font-bold uppercase tracking-[0.24em] text-[#BDE89A]">TEJAYS AGRI</p>
+                  <h2 className="mt-2 font-display text-2xl font-bold tracking-tight">Your enquiry is ready</h2>
+                  <p className="mt-2 max-w-md text-sm leading-relaxed text-[#D7E8DF]">Review your details and choose how you want to send them.</p>
                 </div>
 
-                <div className="rounded-2xl border border-line/10 bg-pageBg p-5">
-                  <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-inkSoft">
-                    Message
-                  </p>
-                  <p className="mt-2 whitespace-pre-wrap text-sm leading-relaxed text-ink">
-                    {enquiryPreview.messageText}
-                  </p>
+                <div className="max-h-[calc(92vh-150px)] space-y-4 overflow-y-auto p-6 sm:p-8">
+                  <div className="grid gap-3 sm:grid-cols-2">
+                    {[
+                      ['Name', enquiryPreview.name],
+                      ['Enquiry', enquiryPreview.selectedEnquiry],
+                      ['Email', enquiryPreview.email],
+                      ['Phone', `+91 ${enquiryPreview.phoneNumber}`]
+                    ].map(([label, value]) => (
+                      <div key={label} className="rounded-2xl bg-pageBg p-4">
+                        <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-inkSoft">{label}</p>
+                        <p className={`mt-1 break-words text-sm font-semibold ${label === 'Enquiry' ? 'text-brand' : 'text-ink'}`}>{value}</p>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="rounded-2xl border border-line/10 bg-pageBg p-5">
+                    <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-inkSoft">Message</p>
+                    <p className="mt-2 whitespace-pre-wrap text-sm leading-relaxed text-ink">{enquiryPreview.messageText}</p>
+                  </div>
+
+                  <div className="grid gap-3 sm:grid-cols-2">
+                    <button type="button" onClick={sendViaEmail} className="inline-flex items-center justify-center gap-2.5 rounded-2xl border border-line/10 bg-pageBg px-5 py-4 text-xs font-bold uppercase tracking-[0.14em] text-ink transition hover:-translate-y-0.5 hover:border-[#D9B54A]/50 hover:text-[#A88721]">
+                      <FiMail className="text-lg" /> Send via Email
+                    </button>
+                    <button type="button" onClick={sendViaWhatsApp} className="inline-flex items-center justify-center gap-2.5 rounded-2xl bg-[#075B3A] px-5 py-4 text-xs font-bold uppercase tracking-[0.14em] text-white transition hover:-translate-y-0.5 hover:bg-[#043D2A]">
+                      <FaWhatsapp className="text-lg text-[#25D366]" /> Send via WhatsApp
+                    </button>
+                  </div>
+
+                  <p className="text-center text-[11px] leading-relaxed text-inkSoft">Email opens your mail app. WhatsApp opens a ready-to-send message.</p>
                 </div>
-
-                <div className="grid gap-3 sm:grid-cols-2">
-                  <button
-                    type="button"
-                    onClick={sendViaEmail}
-                    className="inline-flex items-center justify-center gap-2.5 rounded-2xl border border-line/10 bg-pageBg px-5 py-4 text-xs font-bold uppercase tracking-[0.14em] text-ink transition-all duration-300 hover:-translate-y-0.5 hover:border-brand/40 hover:text-brand"
-                  >
-                    <FiMail className="text-lg" />
-                    Send via Email
-                  </button>
-
-                  <button
-                    type="button"
-                    onClick={sendViaWhatsApp}
-                    className="inline-flex items-center justify-center gap-2.5 rounded-2xl bg-[#075B3A] px-5 py-4 text-xs font-bold uppercase tracking-[0.14em] text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#043D2A]"
-                  >
-                    <FiMessageCircle className="text-lg" />
-                    Send via WhatsApp
-                  </button>
-                </div>
-
-                <p className="text-center text-[11px] leading-relaxed text-inkSoft">
-                  Email opens your mail app. WhatsApp opens a ready-to-send message.
-                </p>
-              </div>
-            </div>
+              </>
+            )}
           </div>
-        )
-      }
+        </div>
+      )}
     </>
   )
 }
