@@ -6,8 +6,13 @@ import {
   FiSend,
   FiMapPin,
   FiClock,
-  FiHelpCircle
+  FiCalendar,
+  FiHelpCircle,
+  FiX,
+  FiChevronLeft,
+  FiChevronRight
 } from 'react-icons/fi'
+import { FaWhatsapp } from 'react-icons/fa'
 
 import { usePageMeta } from '../hooks/usePageMeta'
 import PageHero from '../components/PageHero'
@@ -39,7 +44,7 @@ const contactCards = [
     note: 'Mon–Sat, 9am–6pm IST'
   },
   {
-    icon: FiMessageCircle,
+    icon: FaWhatsapp,
     title: 'WhatsApp',
     value: contactInfo.phoneDisplay,
     href: contactInfo.whatsapp,
@@ -58,6 +63,8 @@ export default function Contact() {
   const [type, setType] = useState('business')
   const [message, setMessage] = useState('')
   const [phone, setPhone] = useState('')
+  const [enquiryPreview, setEnquiryPreview] = useState(null)
+  const [quickContactOpen, setQuickContactOpen] = useState(false)
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' })
@@ -87,31 +94,71 @@ export default function Contact() {
     setPhone(value)
   }
 
+  const TEST_EMAIL = 'prajapatnilesh001@gmail.com'
+  const TEST_WHATSAPP = '919509612559'
+
   const handleSubmit = (e) => {
     e.preventDefault()
 
     const data = new FormData(e.currentTarget)
 
     const name = data.get('name') || ''
-    const company = data.get('company') || ''
+    const company = data.get('company') || 'Not provided'
     const email = data.get('email') || ''
-    const phoneNumber = data.get('phone') || ''
+    const phoneNumber = data.get('phone') || 'Not provided'
     const messageText = data.get('message') || ''
 
     const selectedEnquiry =
       enquiryTypes.find((t) => t.id === type)?.label || 'General'
 
-    const subject = `Enquiry: ${selectedEnquiry}`
+    setEnquiryPreview({
+      name,
+      company,
+      email,
+      phoneNumber,
+      messageText,
+      selectedEnquiry
+    })
+  }
 
-    const body = `Name: ${name}
-Company: ${company}
-Email: ${email}
-Phone: ${phoneNumber}
-Enquiry type: ${selectedEnquiry}
+  const buildEnquiryMessage = (data) => {
+    return `🔔 NEW WEBSITE ENQUIRY
+━━━━━━━━━━━━━━━━━━
 
-${messageText}`
+👤 Name: ${data.name}
+🏢 Company: ${data.company}
+📧 Email: ${data.email}
+📱 Phone: ${data.phoneNumber}
 
-    window.location.href = `mailto:${contactInfo.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+📌 Enquiry Type:
+${data.selectedEnquiry}
+
+💬 Message:
+${data.messageText}
+
+━━━━━━━━━━━━━━━━━━
+🌐 TEJAYS AGRI Website`
+  }
+
+  const sendViaWhatsApp = () => {
+    if (!enquiryPreview) return
+
+    const text = buildEnquiryMessage(enquiryPreview)
+    window.open(
+      `https://wa.me/${TEST_WHATSAPP}?text=${encodeURIComponent(text)}`,
+      '_blank',
+      'noopener,noreferrer'
+    )
+  }
+
+  const sendViaEmail = () => {
+    if (!enquiryPreview) return
+
+    const subject = `New Website Enquiry — ${enquiryPreview.selectedEnquiry}`
+    const body = buildEnquiryMessage(enquiryPreview)
+
+    window.location.href =
+      `mailto:${TEST_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
   }
 
   const messageWordCount = getWordCount(message)
@@ -132,7 +179,7 @@ ${messageText}`
         align="center"
       />
 
-      <section className="bg-pageBg pt-6">
+      <section className="bg-pageBg pt-6 pb-24 md:pb-0">
         <div className="mx-auto w-full max-w-[1400px] px-4 pb-6 sm:px-6 lg:px-10">
           <div className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-3 md:gap-5">
             {contactCards.map((c, i) => (
@@ -197,6 +244,7 @@ ${messageText}`
               </div>
 
               <form
+                id="enquiry-form"
                 onSubmit={handleSubmit}
                 className="mt-8 grid gap-4 sm:grid-cols-2"
               >
@@ -281,9 +329,8 @@ ${messageText}`
                   </button>
 
                   <p className="mt-3 text-xs leading-relaxed text-inkSoft">
-                    Submitting opens your email app with the enquiry
-                    pre-filled — we reply to every message at{' '}
-                    {contactInfo.email}.
+                    After submitting, choose Email or WhatsApp to send your
+                    enquiry directly to the TEJAYS AGRI contact.
                   </p>
                 </div>
               </form>
@@ -373,6 +420,334 @@ ${messageText}`
           </div>
         </div>
       </section>
+
+      {/* =========================================================
+          QUICK CONTACT
+          MOBILE  → BOTTOM BAR
+          TABLET  → RIGHT SIDE
+          DESKTOP → RIGHT SIDE
+      ========================================================= */}
+
+      {/* =========================================================
+          MOBILE — FIXED BOTTOM CONTACT BAR
+      ========================================================= */}
+      <div className="fixed inset-x-0 bottom-0 z-[90] border-t border-white/10 bg-[#07100D]/[0.98] px-2 pt-2 pb-[max(8px,env(safe-area-inset-bottom))] shadow-[0_-12px_40px_rgba(0,0,0,0.30)] backdrop-blur-xl md:hidden">
+        <div className="mx-auto grid w-full max-w-xl grid-cols-[1fr_1fr_1fr_1.28fr] items-center gap-1">
+
+          {/* CALL */}
+          <a
+            href={contactInfo.phoneHref}
+            aria-label="Call TEJAYS AGRI"
+            className="group flex min-h-[68px] flex-col items-center justify-center rounded-2xl px-1 py-2 text-[#BDE89A] transition-all duration-200 active:scale-95"
+          >
+            <span className="flex h-8 w-8 items-center justify-center">
+              <FiPhone className="text-[25px] transition-transform duration-200 group-hover:-translate-y-0.5" />
+            </span>
+
+            <span className="mt-1 text-[11px] font-semibold tracking-wide text-[#BDE89A]">
+              Call
+            </span>
+          </a>
+
+          {/* WHATSAPP — PROPER WHATSAPP ICON */}
+          <a
+            href={contactInfo.whatsapp}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="WhatsApp TEJAYS AGRI"
+            className="group flex min-h-[68px] flex-col items-center justify-center rounded-2xl px-1 py-2 text-[#25D366] transition-all duration-200 active:scale-95"
+          >
+            <span className="flex h-8 w-8 items-center justify-center">
+              <FaWhatsapp className="text-[27px] transition-transform duration-200 group-hover:-translate-y-0.5" />
+            </span>
+
+            <span className="mt-1 text-[11px] font-semibold tracking-wide text-[#25D366]">
+              WhatsApp
+            </span>
+          </a>
+
+          {/* EMAIL */}
+          <a
+            href={`mailto:${contactInfo.email}`}
+            aria-label="Email TEJAYS AGRI"
+            className="group flex min-h-[68px] flex-col items-center justify-center rounded-2xl px-1 py-2 text-[#D9B54A] transition-all duration-200 active:scale-95"
+          >
+            <span className="flex h-8 w-8 items-center justify-center">
+              <FiMail className="text-[25px] transition-transform duration-200 group-hover:-translate-y-0.5" />
+            </span>
+
+            <span className="mt-1 text-[11px] font-semibold tracking-wide text-[#D9B54A]">
+              Email
+            </span>
+          </a>
+
+          {/* CONSULT */}
+          <button
+            type="button"
+            aria-label="Consult with TEJAYS AGRI"
+            onClick={() => {
+              document.getElementById('enquiry-form')?.scrollIntoView({
+                behavior: 'smooth',
+                block: 'center'
+              })
+            }}
+            className="group flex min-h-[68px] items-center justify-center rounded-full bg-[#D9B54A] px-2 py-2 text-[#07100D] shadow-lg shadow-[#D9B54A]/20 transition-all duration-200 hover:bg-[#E5C765] active:scale-[0.97]"
+          >
+            <span className="flex flex-col items-center justify-center">
+              <span className="flex h-8 w-8 items-center justify-center">
+                <FiCalendar className="text-[25px] transition-transform duration-200 group-hover:-translate-y-0.5" />
+              </span>
+
+              <span className="mt-1 text-[11px] font-bold tracking-wide">
+                Consult
+              </span>
+            </span>
+          </button>
+
+        </div>
+      </div>
+
+
+      {/* =========================================================
+          TABLET + DESKTOP — RIGHT SIDE CONTACT
+      ========================================================= */}
+      <div className="pointer-events-none fixed right-0 top-1/2 z-[90] hidden -translate-y-1/2 md:block">
+        <div className="pointer-events-auto flex items-center">
+
+          {/* =====================================================
+              CONTACT OPTIONS
+          ===================================================== */}
+          <div
+            className={`mr-2 flex origin-right flex-col items-center gap-2.5 rounded-3xl border border-line/10 bg-surface/95 p-2.5 shadow-2xl backdrop-blur-xl transition-all duration-300 ${quickContactOpen
+              ? 'translate-x-0 scale-100 opacity-100'
+              : 'pointer-events-none translate-x-8 scale-95 opacity-0'
+              }`}
+            aria-hidden={!quickContactOpen}
+          >
+
+            {/* CALL */}
+            <a
+              href={contactInfo.phoneHref}
+              title="Call"
+              aria-label="Call TEJAYS AGRI"
+              className="flex h-12 w-12 items-center justify-center rounded-full border border-[#72B943]/30 bg-pageBg text-[#72B943] transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#075B3A] hover:text-white"
+            >
+              <FiPhone className="text-[21px]" />
+            </a>
+
+            {/* WHATSAPP */}
+            <a
+              href={contactInfo.whatsapp}
+              target="_blank"
+              rel="noopener noreferrer"
+              title="WhatsApp"
+              aria-label="WhatsApp TEJAYS AGRI"
+              className="flex h-12 w-12 items-center justify-center rounded-full border border-[#25D366]/30 bg-pageBg text-[#25D366] transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#25D366] hover:text-white"
+            >
+              <FaWhatsapp className="text-[22px]" />
+            </a>
+
+            {/* EMAIL */}
+            <a
+              href={`mailto:${contactInfo.email}`}
+              title="Email"
+              aria-label="Email TEJAYS AGRI"
+              className="flex h-12 w-12 items-center justify-center rounded-full border border-[#D9B54A]/30 bg-pageBg text-[#D9B54A] transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#D9B54A] hover:text-[#07100D]"
+            >
+              <FiMail className="text-[21px]" />
+            </a>
+
+            {/* CONSULT */}
+            <button
+              type="button"
+              title="Consult"
+              aria-label="Consult with TEJAYS AGRI"
+              onClick={() => {
+                document.getElementById('enquiry-form')?.scrollIntoView({
+                  behavior: 'smooth',
+                  block: 'center'
+                })
+
+                setQuickContactOpen(false)
+              }}
+              className="flex h-12 w-12 items-center justify-center rounded-full border border-[#D9B54A]/40 bg-[#D9B54A] text-[#07100D] shadow-lg shadow-[#D9B54A]/20 transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#E5C765]"
+            >
+              <FiCalendar className="text-[21px]" />
+            </button>
+
+          </div>
+
+
+          {/* =====================================================
+              CONTACT SIDE TAB
+          ===================================================== */}
+          <button
+            type="button"
+            onClick={() => setQuickContactOpen((open) => !open)}
+            aria-expanded={quickContactOpen}
+            aria-label={
+              quickContactOpen
+                ? 'Close contact options'
+                : 'Open contact options'
+            }
+            className="group relative flex h-[176px] w-[54px] items-center justify-center rounded-l-[28px] border border-[#72B943]/20 bg-[#075B3A] text-white shadow-2xl shadow-[#075B3A]/30 transition-all duration-300 hover:w-[60px] hover:bg-[#064B31]"
+          >
+
+            {/* ARROW */}
+            <span className="absolute left-[-14px] flex h-8 w-8 items-center justify-center rounded-full border border-[#72B943]/30 bg-surface text-[#72B943] shadow-lg">
+              {quickContactOpen ? (
+                <FiChevronRight className="text-lg" />
+              ) : (
+                <FiChevronLeft className="text-lg" />
+              )}
+            </span>
+
+
+            {/* CONTACT */}
+            <span className="flex flex-col items-center justify-center">
+
+              {/* small icon */}
+              <span className="mb-2 flex h-8 w-8 items-center justify-center rounded-full border border-[#72B943]/30 bg-[#064B31] text-[#BDE89A]">
+                <FiPhone className="text-sm" />
+              </span>
+
+              {/* EXACT:
+                  C
+                  O
+                  N
+                  T
+                  A
+                  C
+                  T
+              */}
+              <span className="flex flex-col items-center text-[10px] font-bold leading-[1.05] tracking-[0.18em] text-white">
+                <span>C</span>
+                <span>O</span>
+                <span>N</span>
+                <span>T</span>
+                <span>A</span>
+                <span>C</span>
+                <span>T</span>
+              </span>
+
+            </span>
+          </button>
+
+        </div>
+      </div>
+
+
+
+      {/* ENQUIRY SEND MODAL */}
+      {
+        enquiryPreview && (
+          <div
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-[#07100D]/70 px-4 py-6 backdrop-blur-sm"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="enquiry-send-title"
+          >
+            <div className="relative max-h-[90vh] w-full max-w-lg overflow-y-auto rounded-3xl border border-line/10 bg-surface shadow-2xl">
+              <button
+                type="button"
+                onClick={() => setEnquiryPreview(null)}
+                className="absolute right-5 top-5 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-pageBg text-ink transition-colors hover:bg-[#075B3A] hover:text-white"
+                aria-label="Close enquiry preview"
+              >
+                <FiX />
+              </button>
+
+              <div className="bg-[#075B3A] px-7 py-7 text-white sm:px-8">
+                <p className="text-[11px] font-bold uppercase tracking-[0.24em] text-[#BDE89A]">
+                  TEJAYS AGRI
+                </p>
+                <h2
+                  id="enquiry-send-title"
+                  className="mt-2 font-display text-2xl font-bold tracking-tight"
+                >
+                  Your enquiry is ready
+                </h2>
+                <p className="mt-2 text-sm leading-relaxed text-[#D7E8DF]">
+                  Review your details and choose how you want to send them.
+                </p>
+              </div>
+
+              <div className="space-y-4 p-7 sm:p-8">
+                <div className="grid gap-3 sm:grid-cols-2">
+                  <div className="rounded-2xl bg-pageBg p-4">
+                    <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-inkSoft">
+                      Name
+                    </p>
+                    <p className="mt-1 break-words text-sm font-semibold text-ink">
+                      {enquiryPreview.name}
+                    </p>
+                  </div>
+
+                  <div className="rounded-2xl bg-pageBg p-4">
+                    <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-inkSoft">
+                      Enquiry
+                    </p>
+                    <p className="mt-1 break-words text-sm font-semibold text-brand">
+                      {enquiryPreview.selectedEnquiry}
+                    </p>
+                  </div>
+
+                  <div className="rounded-2xl bg-pageBg p-4">
+                    <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-inkSoft">
+                      Email
+                    </p>
+                    <p className="mt-1 break-all text-sm font-semibold text-ink">
+                      {enquiryPreview.email}
+                    </p>
+                  </div>
+
+                  <div className="rounded-2xl bg-pageBg p-4">
+                    <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-inkSoft">
+                      Phone
+                    </p>
+                    <p className="mt-1 text-sm font-semibold text-ink">
+                      {enquiryPreview.phoneNumber}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="rounded-2xl border border-line/10 bg-pageBg p-5">
+                  <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-inkSoft">
+                    Message
+                  </p>
+                  <p className="mt-2 whitespace-pre-wrap text-sm leading-relaxed text-ink">
+                    {enquiryPreview.messageText}
+                  </p>
+                </div>
+
+                <div className="grid gap-3 sm:grid-cols-2">
+                  <button
+                    type="button"
+                    onClick={sendViaEmail}
+                    className="inline-flex items-center justify-center gap-2.5 rounded-2xl border border-line/10 bg-pageBg px-5 py-4 text-xs font-bold uppercase tracking-[0.14em] text-ink transition-all duration-300 hover:-translate-y-0.5 hover:border-brand/40 hover:text-brand"
+                  >
+                    <FiMail className="text-lg" />
+                    Send via Email
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={sendViaWhatsApp}
+                    className="inline-flex items-center justify-center gap-2.5 rounded-2xl bg-[#075B3A] px-5 py-4 text-xs font-bold uppercase tracking-[0.14em] text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#043D2A]"
+                  >
+                    <FiMessageCircle className="text-lg" />
+                    Send via WhatsApp
+                  </button>
+                </div>
+
+                <p className="text-center text-[11px] leading-relaxed text-inkSoft">
+                  Email opens your mail app. WhatsApp opens a ready-to-send message.
+                </p>
+              </div>
+            </div>
+          </div>
+        )
+      }
     </>
   )
 }
