@@ -277,25 +277,25 @@ ${data.messageText}
                 {/* PHONE - ONLY 10 DIGITS */}
                 <div className="flex overflow-hidden rounded-xl border border-line/12 bg-pageBg transition-all duration-200 focus-within:border-brand focus-within:bg-surface focus-within:ring-2 focus-within:ring-brand/10">
 
-  <span className="flex items-center border-r border-line/10 bg-tint/40 px-4 text-sm font-bold text-brand">
-    +91
-  </span>
+                  <span className="flex items-center border-r border-line/10 bg-tint/40 px-4 text-sm font-bold text-brand">
+                    +91
+                  </span>
 
-  <input
-    name="phone"
-    type="tel"
-    inputMode="numeric"
-    autoComplete="tel-national"
-    maxLength={10}
-    pattern="[0-9]{10}"
-    value={phone}
-    onChange={handlePhoneChange}
-    placeholder="Enter 10-digit mobile number"
-    title="Please enter exactly 10 digits"
-    className="min-w-0 flex-1 bg-transparent px-4 py-3.5 text-sm text-ink outline-none placeholder:text-inkSoft"
-  />
+                  <input
+                    name="phone"
+                    type="tel"
+                    inputMode="numeric"
+                    autoComplete="tel-national"
+                    maxLength={10}
+                    pattern="[0-9]{10}"
+                    value={phone}
+                    onChange={handlePhoneChange}
+                    placeholder="Enter 10-digit mobile number"
+                    title="Please enter exactly 10 digits"
+                    className="min-w-0 flex-1 bg-transparent px-4 py-3.5 text-sm text-ink outline-none placeholder:text-inkSoft"
+                  />
 
-</div>
+                </div>
 
                 {/* MESSAGE */}
                 <div className="sm:col-span-2">
@@ -605,7 +605,7 @@ ${data.messageText}
           >
 
             {/* ARROW */}
-            <span className="absolute left-[-14px] flex h-8 w-8 items-center justify-center rounded-full border border-[#72B943]/30 bg-surface text-[#72B943] shadow-lg">
+            <span className="absolute left-[-18px] flex h-8 w-8 items-center justify-center rounded-full border border-[#72B943]/30 bg-surface text-[#72B943] shadow-lg">
               {quickContactOpen ? (
                 <FiChevronRight className="text-lg" />
               ) : (
@@ -631,7 +631,7 @@ ${data.messageText}
                   C
                   T
               */}
-              <span className="flex flex-col items-center text-[10px] font-bold leading-[1.05] tracking-[0.18em] text-white">
+              <span className="flex flex-col items-center gap-1 text-[10px] font-bold leading-[1.05] tracking-[0.18em] text-white">
                 <span>C</span>
                 <span>O</span>
                 <span>N</span>
