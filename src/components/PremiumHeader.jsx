@@ -317,9 +317,8 @@ function PremiumHeader() {
 
               <div
                 className="relative"
-                onMouseEnter={() =>
-                  setOpenMenu("ecosystem")
-                }
+                onMouseEnter={() => setOpenMenu("ecosystem")}
+                onMouseLeave={() => setOpenMenu(null)}
               >
                 <button
                   type="button"
@@ -386,7 +385,7 @@ function PremiumHeader() {
                       rounded-t-[18px]
                       border
                       border-white/10
-                      bg-surface
+                      bg-pageBg
                       p-5
                       shadow-[0_28px_75px_rgba(0,0,0,0.25)]
                     "
@@ -520,9 +519,8 @@ function PremiumHeader() {
 
               <div
                 className="relative"
-                onMouseEnter={() =>
-                  setOpenMenu("company")
-                }
+                onMouseEnter={() => setOpenMenu("company")}
+                onMouseLeave={() => setOpenMenu(null)}
               >
                 <button
                   type="button"
@@ -747,11 +745,10 @@ function PremiumHeader() {
                   aria-label="Switch to light mode"
                   aria-pressed={theme === "light"}
                   onClick={() => changeTheme("light")}
-                  className={`group flex h-8 w-8 items-center justify-center rounded-full transition-all duration-300 ease-out focus:outline-none focus:ring-2 focus:ring-brand/30 ${
-                    theme === "light"
-                      ? "bg-brandFill text-white shadow-[0_4px_14px_rgb(var(--brand)/0.28)]"
-                      : "text-ink/50 hover:-translate-y-0.5 hover:bg-brand/10 hover:text-brand hover:shadow-sm active:scale-90"
-                  }`}
+                  className={`group flex h-8 w-8 items-center justify-center rounded-full transition-all duration-300 ease-out focus:outline-none focus:ring-2 focus:ring-brand/30 ${theme === "light"
+                    ? "bg-brandFill text-white shadow-[0_4px_14px_rgb(var(--brand)/0.28)]"
+                    : "text-ink/50 hover:-translate-y-0.5 hover:bg-brand/10 hover:text-brand hover:shadow-sm active:scale-90"
+                    }`}
                 >
                   <FiSun className="text-[15px] transition-all duration-500 group-hover:rotate-45 group-hover:scale-110" />
                 </button>
@@ -763,11 +760,10 @@ function PremiumHeader() {
                   aria-label="Switch to dark mode"
                   aria-pressed={theme === "dark"}
                   onClick={() => changeTheme("dark")}
-                  className={`group flex h-8 w-8 items-center justify-center rounded-full transition-all duration-300 ease-out focus:outline-none focus:ring-2 focus:ring-[#07100D]/20 ${
-                    theme === "dark"
-                      ? "bg-[#07100D] text-accent shadow-[0_4px_14px_rgba(7,16,13,0.25)]"
-                      : "text-ink/50 hover:-translate-y-0.5 hover:bg-[#07100D]/10 hover:text-[#07100D] hover:shadow-sm active:scale-90"
-                  }`}
+                  className={`group flex h-8 w-8 items-center justify-center rounded-full transition-all duration-300 ease-out focus:outline-none focus:ring-2 focus:ring-[#07100D]/20 ${theme === "dark"
+                    ? "bg-[#07100D] text-accent shadow-[0_4px_14px_rgba(7,16,13,0.25)]"
+                    : "text-ink/50 hover:-translate-y-0.5 hover:bg-[#07100D]/10 hover:text-[#07100D] hover:shadow-sm active:scale-90"
+                    }`}
                 >
                   <FiMoon className="text-[15px] transition-all duration-500 group-hover:-rotate-12 group-hover:scale-110" />
                 </button>

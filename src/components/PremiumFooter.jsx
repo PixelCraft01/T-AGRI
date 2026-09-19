@@ -240,9 +240,10 @@ export default function PremiumFooter() {
         <div className="h-px w-full bg-white/10" />
 
         {/* BOTTOM */}
-        <div className="flex flex-col gap-6 py-7 lg:flex-row lg:items-center lg:justify-between">
+        {/* BOTTOM FOOTER */}
+        <div className="flex flex-col gap-6 border-t border-white/[0.06] py-7 lg:flex-row lg:items-center lg:justify-between">
 
-          {/* COPYRIGHT */}
+          {/* COPYRIGHT + BRAND INFO */}
           <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-4">
 
             <p className="text-[10px] font-medium text-white/60">
@@ -254,49 +255,38 @@ export default function PremiumFooter() {
             <p className="text-[9px] uppercase tracking-[0.2em] text-white/40">
               Technology · Dairy · Nutrition · Sustainability
             </p>
+
           </div>
 
-          {/* LEGAL / BACK TO TOP */}
-          <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
+          {/* FOOTER LINKS */}
+          <div className="flex flex-wrap items-center gap-x-7 gap-y-3">
 
-            <Link
-              to="/privacy"
-              className="group text-[9px] font-semibold uppercase tracking-[0.18em] text-white/60 transition-colors duration-300 hover:text-white"
-            >
+            <span className="cursor-default text-[9px] font-semibold uppercase tracking-[0.18em] text-white/50 transition-colors duration-300 hover:text-[#72B943]">
               Privacy
-            </Link>
+            </span>
 
-            <Link
-              to="/terms"
-              className="group text-[9px] font-semibold uppercase tracking-[0.18em] text-white/60 transition-colors duration-300 hover:text-white"
-            >
+            <span className="h-3 w-px bg-white/10" />
+
+            <span className="cursor-default text-[9px] font-semibold uppercase tracking-[0.18em] text-white/50 transition-colors duration-300 hover:text-[#72B943]">
               Terms
-            </Link>
+            </span>
 
-            <button
-              type="button"
-              onClick={() =>
-                window.scrollTo({
-                  top: 0,
-                  behavior: 'smooth',
-                })
-              }
-              className="group inline-flex items-center gap-2 text-[9px] font-semibold uppercase tracking-[0.18em] text-white/60 transition-colors duration-300 hover:text-white"
-            >
-              Back to top
+            <span className="h-3 w-px bg-white/10" />
 
-              <span className="flex h-6 w-6 items-center justify-center rounded-full border border-white/30 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:border-[#72B943] group-hover:text-[#72B943]">
-                ↑
-              </span>
-            </button>
+            <span className="cursor-default text-[9px] font-semibold uppercase tracking-[0.18em] text-white/50 transition-colors duration-300 hover:text-[#72B943]">
+              Contact
+            </span>
+
           </div>
         </div>
 
         {/* FINAL MICRO LINE */}
         <div className="flex items-center justify-center border-t border-white/[0.06] py-4">
+
           <p className="text-center text-[7px] font-bold uppercase tracking-[0.38em] text-white/30">
             Integrated Dairy · Food · Nutrition · Agriculture Ecosystem
           </p>
+
         </div>
       </div>
     </footer>
